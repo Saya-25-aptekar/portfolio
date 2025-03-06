@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #333;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#bioText {
+    font-size: 18px;
+    color: #555;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Personal Bio</h1>
+        <div id="bioContainer">
+            <h2>Your Bio Information</h2>
+            <img id="profilePic" src="" alt="Profile Picture" class="profile-img">
+            <p id="bioText"></p>
+            <button id="updateBioButton">Update Bio</button>
+        </div>
+    </div>
+
+    <script >
+function collectBioDetails() {
+    
+    let name = prompt("Please enter your name:");
+    while (!name) {
+        alert("Name cannot be empty!");
+        name = prompt("Please enter your name:");
+    }
+
+    let profession = prompt("Please enter your profession:");
+    while (!profession) {
+        alert("Profession cannot be empty!");
+        profession = prompt("Please enter your profession:");
+    }
+
+    let bio = prompt("Please enter a short bio about yourself:");
+    while (!bio) {
+        alert("Bio cannot be empty!");
+        bio = prompt("Please enter a short bio about yourself:");
+    }
+
+    let profilePicURL = prompt("Please enter the URL of your profile picture:");
+    while (!profilePicURL) {
+        alert("Profile picture URL cannot be empty!");
+        profilePicURL = prompt("Please enter the URL of your profile picture:");
+    }
+
+    
+    alert(`Name: ${name}\nProfession: ${profession}\nBio: ${bio}`);
+
+    
+    console.log("Collected Bio Information:");
+    console.log(`Name: ${name}`);
+    console.log(`Profession: ${profession}`);
+    console.log(`Bio: ${bio}`);
+    console.log(`Profile Picture URL: ${profilePicURL}`);
+
+
+    document.getElementById("profilePic").src = profilePicURL;
+    document.getElementById("bioText").innerHTML = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>Profession:</strong> ${profession}<br>
+        <strong>Bio:</strong> ${bio}
+    `;
+}
+
+
+document.getElementById("updateBioButton").addEventListener("click", function() {
+    collectBioDetails();
+});
+
+
+collectBioDetails();
+</script>
+</body>
+</html>
